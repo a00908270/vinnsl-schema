@@ -1,0 +1,32 @@
+<definition>
+    <identifier>00000000000000000000000000000007</identifier>
+    <problemDomain>
+        <!--1 or more repetitions:-->
+        <networkType>Backpropagation</networkType>
+        <problemType>Clustering</problemType>
+    </problemDomain>
+    <endpoints>train</endpoints>
+    <structure>
+        <input>
+            <ID>string</ID>
+            <dimension>100</dimension>
+            <size>100</size>
+        </input>
+        <!--Zero or more repetitions:-->
+        <hidden>
+            <ID>string</ID>
+            <dimension>100</dimension>
+            <size>100</size>
+        </hidden>
+    </structure>
+    <resultSchema>
+        <instance>true</instance>
+        <training>true</training>
+    </resultSchema>
+    <parameters>
+        <!--You have a CHOICE of the next 3 items at this level-->
+        <valueparameter name="string">1000.00</valueparameter>
+        <boolparameter name="string">false</boolparameter>
+        <comboparameter name="string">string</comboparameter>
+    </parameters>
+</definition>

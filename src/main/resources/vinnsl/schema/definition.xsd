@@ -1,6 +1,51 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
 
+    <xs:simpleType name="propa">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="feedforward"/>
+            <xs:enumeration value="feedback"/>
+            <xs:enumeration value="recurrent"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="minno1">
+        <xs:restriction base="xs:integer">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="parametervalue">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="valueparameter">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:decimal">
+                            <xs:attribute name="name" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="boolparameter">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:boolean">
+                            <xs:attribute name="name" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="comboparameter">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="name" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
 
     <xs:element name="definition">
         <xs:complexType>
@@ -313,7 +358,7 @@
                             </xs:element>
                             <xs:element name="connections">
                                 <xs:complexType>
-                                    <xs:choice maxOccurs="unbounded">
+                                    <xs:output maxOccurs="unbounded">
                                         <xs:element name="fullconnected" minOccurs="0">
                                             <xs:complexType>
                                                 <xs:sequence maxOccurs="unbounded">
@@ -330,7 +375,7 @@
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-                                    </xs:choice>
+                                    </xs:output>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>

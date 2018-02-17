@@ -1,0 +1,12 @@
+<jaxb:bindings
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        version="2.1">
+    <jaxb:globalBindings localScoping="toplevel"/>
+
+    <jaxb:bindings schemaLocation="schema/definition.xsd">
+        <jaxb:bindings
+                node="//xsd:element[@name='definition']/xsd:complexType/xsd:sequence/xsd:element[@name='executionEnvironment']/xsd:complexType/xsd:sequence/xsd:element[@name='parallel']/xsd:complexType/xsd:sequence/xsd:element[@name='software']/xsd:complexType/xsd:choice/xsd:element[@name='data']">
+            <jaxb:class name="ExecutionData"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

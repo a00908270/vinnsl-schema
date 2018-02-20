@@ -33,11 +33,17 @@
                     <!-- Set the package of the generated code -->
                     <packageName>at.ac.univie.a00908270.vinnsl.schema</packageName>
                     <sources>
-                        <source>src/main/resources/vinnsl/schema/definition_reduced.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/VinnslType.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/description.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/definition.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/data.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/instance.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/result.xsd</source>
+                        <source>src/main/resources/vinnsl/schema/training_res.xsd</source>
                     </sources>
-                    <xjbSources>
-                        <xjbSource>>src/main/resources/vinnsl/binding.xjb</xjbSource>
-                    </xjbSources>
+                    <!-- <xjbSources>
+                         <xjbSource>>src/main/resources/vinnsl/binding.xjb</xjbSource>
+                     </xjbSources>-->
                 </configuration>
             </plugin>
 
@@ -57,6 +63,36 @@
                                 <source>${basedir}/target/generated-sources</source>
                             </sources>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.0.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <sourcepath>${basedir}/target/generated-sources</sourcepath>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

@@ -1,0 +1,138 @@
+<description>
+  <identifier>string</identifier>
+  <metadata>
+    <paradigm>string</paradigm>
+    <name>string</name>
+    <description>string</description>
+    <version>
+      <major>100</major>
+      <minor>100</minor>
+    </version>
+  </metadata>
+  <creator>
+    <name>string</name>
+    <contact>string</contact>
+  </creator>
+  <problemDomain>
+    <propagationType type="feedforward">
+      <learningType>unsupervised</learningType>
+    </propagationType>
+    <!--1 or more repetitions:-->
+    <applicationField>Retail</applicationField>
+    <networkType>Jordan-Net</networkType>
+    <problemType>Clustering</problemType>
+  </problemDomain>
+  <endpoints>
+    <train>true</train>
+    <retrain>false</retrain>
+    <evaluate>false</evaluate>
+  </endpoints>
+  <!--1 or more repetitions:-->
+  <executionEnvironment>
+    <serial>false</serial>
+    <!--Optional:-->
+    <parallel>
+      <software>
+        <!--You have a CHOICE of the next 2 items at this level-->
+        <control>
+          <transputer version="string">string</transputer>
+        </control>
+        <data>
+          <!--You have a CHOICE of the next 2 items at this level-->
+          <topological>
+            <!--You have a CHOICE of the next 3 items at this level-->
+            <pipelining>
+              <systolicarr version="string">string</systolicarr>
+            </pipelining>
+            <coarsestruct>
+              <!--You have a CHOICE of the next 2 items at this level-->
+              <connmachine version="string">string</connmachine>
+              <maspar version="string">string</maspar>
+            </coarsestruct>
+            <finestruct>
+              <connmachine version="string">string</connmachine>
+            </finestruct>
+          </topological>
+          <structural>
+            <spmd>
+              <!--You have a CHOICE of the next 4 items at this level-->
+              <hypercube version="string">string</hypercube>
+              <cluster version="string">string</cluster>
+              <gpgpu version="string">string</gpgpu>
+              <multicore version="string">string</multicore>
+            </spmd>
+          </structural>
+        </data>
+      </software>
+      <hardware>
+        <!--You have a CHOICE of the next 2 items at this level-->
+        <general>
+          <!--You have a CHOICE of the next 3 items at this level-->
+          <valueparameter name="string">1000.00</valueparameter>
+          <boolparameter name="string">true</boolparameter>
+          <comboparameter name="string">string</comboparameter>
+        </general>
+        <special>
+          <!--You have a CHOICE of the next 3 items at this level-->
+          <valueparameter name="string">1000.00</valueparameter>
+          <boolparameter name="string">true</boolparameter>
+          <comboparameter name="string">string</comboparameter>
+        </special>
+      </hardware>
+    </parallel>
+  </executionEnvironment>
+  <structure>
+    <input>
+      <ID>string</ID>
+      <dimension>
+        <min>100</min>
+        <max>100</max>
+      </dimension>
+      <size>
+        <min>100</min>
+        <max>100</max>
+      </size>
+    </input>
+    <!--Zero or more repetitions:-->
+    <hidden>
+      <ID>string</ID>
+      <dimension>
+        <min>100</min>
+        <max>100</max>
+      </dimension>
+      <size>
+        <min>100</min>
+        <max>100</max>
+      </size>
+    </hidden>
+    <!--Optional:-->
+    <output>
+      <ID>string</ID>
+      <dimension>
+        <min>100</min>
+        <max>100</max>
+      </dimension>
+      <size>
+        <min>100</min>
+        <max>100</max>
+      </size>
+    </output>
+    <connections>shortcuts</connections>
+  </structure>
+  <parameters>
+    <!--You have a CHOICE of the next 3 items at this level-->
+    <!--1 or more repetitions:-->
+    <valueparameter>string</valueparameter>
+    <!--1 or more repetitions:-->
+    <boolparameter>string</boolparameter>
+    <!--1 or more repetitions:-->
+    <comboparameter>string</comboparameter>
+  </parameters>
+  <data>
+    <description>string</description>
+    <!--Optional:-->
+    <tabledescription>string</tabledescription>
+    <!--Optional:-->
+    <filedescription>string</filedescription>
+  </data>
+</description>

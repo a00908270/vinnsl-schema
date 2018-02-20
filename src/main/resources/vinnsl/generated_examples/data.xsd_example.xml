@@ -1,0 +1,16 @@
+<dataschema>
+  <identifier>string</identifier>
+  <creationdate>2008-09-29</creationdate>
+  <data>
+    <!--Optional:-->
+    <table>
+      <!--You have a CHOICE of the next 2 items at this level-->
+      <netinput>string</netinput>
+      <netoutput>string</netoutput>
+      <!--1 or more repetitions:-->
+      <input>string</input>
+    </table>
+    <!--Optional:-->
+    <file>string</file>
+  </data>
+</dataschema>

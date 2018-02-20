@@ -1,17 +1,40 @@
-<definition>
+<instanceschema>
   <identifier>string</identifier>
-  <problemDomain>
-    <propagationType type="feedforward">
-      <learningType>unsupervised</learningType>
-    </propagationType>
-    <!--1 or more repetitions:-->
-    <applicationField>Retail</applicationField>
-    <networkType>Jordan-Net</networkType>
-    <problemType>Clustering</problemType>
-  </problemDomain>
-  <endpoints>train</endpoints>
+  <creationdate>2008-09-29</creationdate>
+  <structure>
+    <input>
+      <ID>string</ID>
+      <dimension>100</dimension>
+      <size>100</size>
+    </input>
+    <!--Optional:-->
+    <hidden>
+      <ID>string</ID>
+      <dimension>100</dimension>
+      <size>100</size>
+    </hidden>
+    <!--Optional:-->
+    <output>
+      <ID>string</ID>
+      <dimension>100</dimension>
+      <size>100</size>
+    </output>
+    <connections>
+      <!--You have a CHOICE of the next 2 items at this level-->
+      <!--Optional:-->
+      <fullconnected>
+        <fromblock>string</fromblock>
+        <toblock>string</toblock>
+      </fullconnected>
+      <!--Optional:-->
+      <shortcuts>
+        <fromneuron>string</fromneuron>
+        <toneuron>string</toneuron>
+      </shortcuts>
+    </connections>
+  </structure>
   <executionEnvironment>
-    <serial>false</serial>
+    <serial>true</serial>
     <!--Optional:-->
     <parallel>
       <software>
@@ -51,63 +74,29 @@
         <general>
           <!--You have a CHOICE of the next 3 items at this level-->
           <valueparameter name="string">1000.00</valueparameter>
-          <boolparameter name="string">false</boolparameter>
+          <boolparameter name="string">true</boolparameter>
           <comboparameter name="string">string</comboparameter>
         </general>
         <special>
           <!--You have a CHOICE of the next 3 items at this level-->
           <valueparameter name="string">1000.00</valueparameter>
-          <boolparameter name="string">false</boolparameter>
+          <boolparameter name="string">true</boolparameter>
           <comboparameter name="string">string</comboparameter>
         </special>
       </hardware>
     </parallel>
   </executionEnvironment>
-  <structure>
-    <input>
-      <ID>string</ID>
-      <dimension>100</dimension>
-      <size>100</size>
-    </input>
-    <!--Zero or more repetitions:-->
-    <hidden>
-      <ID>string</ID>
-      <dimension>100</dimension>
-      <size>100</size>
-    </hidden>
-    <!--Optional:-->
-    <output>
-      <ID>string</ID>
-      <dimension>100</dimension>
-      <size>100</size>
-    </output>
-    <connections>
-      <!--You have a CHOICE of the next 2 items at this level-->
-      <!--Optional:-->
-      <fullconnected>
-        <fromblock>string</fromblock>
-        <toblock>string</toblock>
-      </fullconnected>
-      <shortcuts>
-        <fromneuron>string</fromneuron>
-        <toneuron>string</toneuron>
-      </shortcuts>
-    </connections>
-  </structure>
-  <resultSchema>
-    <instance>true</instance>
-    <training>true</training>
-  </resultSchema>
-  <parameters>
-    <!--You have a CHOICE of the next 3 items at this level-->
-    <valueparameter name="string">1000.00</valueparameter>
-    <boolparameter name="string">false</boolparameter>
-    <comboparameter name="string">string</comboparameter>
-  </parameters>
-  <data>
-    <description>string</description>
-    <dataSchemaID>string</dataSchemaID>
-  </data>
+  <problemDomain>
+    <networkType>Counterpropagation</networkType>
+    <propagationType type="feedback">
+      <learningType>unsupervised</learningType>
+    </propagationType>
+    <!--1 or more repetitions:-->
+    <applicationField>string</applicationField>
+    <problemType>Clustering</problemType>
+  </problemDomain>
+  <weightmatrix>string</weightmatrix>
+  <activationfunction>string</activationfunction>
   <!--Optional:-->
-  <instanceSchemaID>string</instanceSchemaID>
-</definition>
+  <dataSchemaID>string</dataSchemaID>
+</instanceschema>

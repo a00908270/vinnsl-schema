@@ -1,0 +1,84 @@
+<trainingresultschema>
+  <identifier>string</identifier>
+  <creationdate>2008-09-29</creationdate>
+  <data>
+    <!--Optional:-->
+    <table>
+      <netinput>string</netinput>
+      <netoutput>string</netoutput>
+    </table>
+    <!--Optional:-->
+    <file>string</file>
+  </data>
+  <weightmatrix>string</weightmatrix>
+  <epochs>100</epochs>
+  <meanerror>1000.00</meanerror>
+  <activationfunction>string</activationfunction>
+  <totalexecutiontime>string</totalexecutiontime>
+  <epocherrorvalue>string</epocherrorvalue>
+  <learningrate>1000.00</learningrate>
+  <momentum>1000.00</momentum>
+  <threshold>1000.00</threshold>
+  <!--Zero or more repetitions:-->
+  <bias>
+    <!--You have a CHOICE of the next 1 items at this level-->
+    <valueparameter name="string">1000.00</valueparameter>
+  </bias>
+  <executionEnvironment>
+    <serial>true</serial>
+    <!--Optional:-->
+    <parallel>
+      <software>
+        <!--You have a CHOICE of the next 2 items at this level-->
+        <control>
+          <transputer version="string">string</transputer>
+        </control>
+        <data>
+          <!--You have a CHOICE of the next 2 items at this level-->
+          <topological>
+            <!--You have a CHOICE of the next 3 items at this level-->
+            <pipelining>
+              <systolicarr version="string">string</systolicarr>
+            </pipelining>
+            <coarsestruct>
+              <!--You have a CHOICE of the next 2 items at this level-->
+              <connmachine version="string">string</connmachine>
+              <maspar version="string">string</maspar>
+            </coarsestruct>
+            <finestruct>
+              <connmachine version="string">string</connmachine>
+            </finestruct>
+          </topological>
+          <structural>
+            <spmd>
+              <!--You have a CHOICE of the next 4 items at this level-->
+              <hypercube version="string">string</hypercube>
+              <cluster version="string">string</cluster>
+              <gpgpu version="string">string</gpgpu>
+              <multicore version="string">string</multicore>
+            </spmd>
+          </structural>
+        </data>
+      </software>
+      <hardware>
+        <!--You have a CHOICE of the next 2 items at this level-->
+        <general>
+          <!--You have a CHOICE of the next 3 items at this level-->
+          <valueparameter name="string">1000.00</valueparameter>
+          <boolparameter name="string">true</boolparameter>
+          <comboparameter name="string">string</comboparameter>
+        </general>
+        <special>
+          <!--You have a CHOICE of the next 3 items at this level-->
+          <valueparameter name="string">1000.00</valueparameter>
+          <boolparameter name="string">true</boolparameter>
+          <comboparameter name="string">string</comboparameter>
+        </special>
+      </hardware>
+    </parallel>
+  </executionEnvironment>
+  <propagationType type="recurrent">
+    <learningType>trained</learningType>
+  </propagationType>
+  <networkType>CNN</networkType>
+</trainingresultschema>

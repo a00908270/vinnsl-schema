@@ -3,95 +3,65 @@
 
     <xs:include schemaLocation="VinnslType.xsd"/>
 
-    <xs:element name="definition">
+    <xs:complexType name="parametervalueBias">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="valueparameter">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:decimal">
+                            <xs:attribute name="name" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:element name="trainingresultschema">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="identifier" type="xs:string"/>
-                <xs:element name="problemDomain">
+                <xs:element name="creationdate" type="xs:date"/>
+                <xs:element name="data">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="propagationType">
+                            <xs:element name="table" minOccurs="0">
                                 <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="learningType">
+                                    <xs:sequence maxOccurs="unbounded">
+                                        <xs:element name="netinput">
                                             <xs:simpleType>
                                                 <xs:restriction base="xs:string">
-                                                    <xs:enumeration value="definedconstructed"/>
-                                                    <xs:enumeration value="trained"/>
-                                                    <xs:enumeration value="supervised"/>
-                                                    <xs:enumeration value="unsupervised"/>
-                                                    <xs:enumeration value="linear"/>
+                                                    <xs:pattern value="(([0-9])*([.])?([0-9])*(\s)?)+"/>
+                                                    <xs:whiteSpace value="preserve"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="netoutput">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:pattern value="(([0-9])*([.])?([0-9])*(\s)?)+"/>
+                                                    <xs:whiteSpace value="preserve"/>
                                                 </xs:restriction>
                                             </xs:simpleType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="type" type="propa"/>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="applicationField" maxOccurs="unbounded">
-                                <xs:simpleType>
-                                    <xs:union>
-                                        <xs:simpleType>
-                                            <xs:restriction base="xs:string">
-                                                <xs:enumeration value="AccFin"/>
-                                                <xs:enumeration value="HealthMed"/>
-                                                <xs:enumeration value="Marketing"/>
-                                                <xs:enumeration value="Retail"/>
-                                                <xs:enumeration value="Insur"/>
-                                                <xs:enumeration value="Telecom"/>
-                                                <xs:enumeration value="Operations"/>
-                                                <xs:enumeration value="EMS"/>
-                                            </xs:restriction>
-                                        </xs:simpleType>
-                                        <xs:simpleType>
-                                            <xs:restriction base="xs:string">
-                                                <xs:pattern value="[A-Za-z]*"></xs:pattern>
-                                            </xs:restriction>
-                                        </xs:simpleType>
-                                    </xs:union>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="networkType">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="Hopfield"/>
-                                        <xs:enumeration value="CNN"/>
-                                        <xs:enumeration value="ART"/>
-                                        <xs:enumeration value="Backpropagation"/>
-                                        <xs:enumeration value="Cascade-Correlation"/>
-                                        <xs:enumeration value="Kohonen"/>
-                                        <xs:enumeration value="Counterpropagation"/>
-                                        <xs:enumeration value="Perceptron"/>
-                                        <xs:enumeration value="Linear-Associator"/>
-                                        <xs:enumeration value="Jordan-Net"/>
-                                        <xs:enumeration value="Elman-Net"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="problemType">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="Classifiers"/>
-                                        <xs:enumeration value="Approximators"/>
-                                        <xs:enumeration value="Memory"/>
-                                        <xs:enumeration value="Optimisation"/>
-                                        <xs:enumeration value="Clustering"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
+                            <xs:element name="file" type="xs:string" minOccurs="0"/>
                         </xs:sequence>
-                        <!--<xs:assert
-                            test="((propagationType/@type = 'feedback' and propagationType/learningType = 'definedconstructed' and (networkType = 'Hopfield' or networkType = 'CNN')) or (propagationType/@type = 'feedback' and propagationType/learningType = 'trained' and networkType = 'ART') or (propagationType/@type = 'feedforward' and propagationType/learningType = 'supervised' and (networkType = 'Backpropagation' or networkType = 'Cascade-Correlation')) or (propagationType/@type = 'feedforward' and propagationType/learningType = 'unsupervised' and (networkType = 'Counterpropagation' or networkType = 'Kohonen')) or (propagationType/@type = 'feedforward' and propagationType/learningType = 'linear' and (networkType = 'Linear-Associator' or networkType = 'Perceptron')) or (propagationType/@type = 'recurrent' and propagationType/learningType = 'supervised' and (networkType = 'Jordan-Net' or networkType = 'Elman-Net')) and count(networkType) = 1 and count(propagationType/learningType) = 1 and count(propagationType/@type) = 1)"           />-->
+                        <!--<xs:assert test="(count(table) + count(file)) > 0"/>-->
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="endpoints">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="train"/>
-                            <xs:enumeration value="retrain"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
+                <xs:element name="weightmatrix" type="xs:string"/>
+                <xs:element name="epochs" type="xs:integer"/>
+                <xs:element name="meanerror" type="xs:decimal"/>
+                <xs:element name="activationfunction" type="xs:string"/>
+                <xs:element name="totalexecutiontime" type="xs:string"/>
+                <xs:element name="epocherrorvalue" type="xs:string"/>
+                <xs:element name="learningrate" type="xs:decimal"/>
+                <xs:element name="momentum" type="xs:decimal"/>
+                <xs:element name="threshold" type="xs:decimal"/>
+                <xs:element name="bias" type="parametervalueBias" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="executionEnvironment">
                     <xs:complexType>
                         <xs:sequence>
@@ -264,6 +234,7 @@
                                                                 </xs:element>
                                                             </xs:choice>
                                                         </xs:complexType>
+
                                                     </xs:element>
                                                 </xs:choice>
                                             </xs:complexType>
@@ -282,91 +253,46 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="structure">
+                <xs:element name="propagationType">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="input">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="ID" type="xs:string"/>
-                                        <xs:element name="dimension" type="minno1"/>
-                                        <xs:element name="size" type="minno1"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="hidden" minOccurs="0" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="ID" type="xs:string"/>
-                                        <xs:element name="dimension" type="minno1"/>
-                                        <xs:element name="size" type="minno1"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="output" minOccurs="0">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="ID" type="xs:string"/>
-                                        <xs:element name="dimension" type="minno1"/>
-                                        <xs:element name="size" type="minno1"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="connections">
-                                <xs:complexType>
-                                    <xs:sequence maxOccurs="unbounded">
-                                        <xs:element name="fullconnected" minOccurs="0">
-                                            <xs:complexType>
-                                                <xs:sequence maxOccurs="unbounded">
-                                                    <xs:element name="fromblock" type="xs:string"/>
-                                                    <xs:element name="toblock" type="xs:string"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="shortcuts">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name="fromneuron" type="xs:string"/>
-                                                    <xs:element name="toneuron" type="xs:string"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
+                            <xs:element name="learningType">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="definedconstructed"/>
+                                        <xs:enumeration value="trained"/>
+                                        <xs:enumeration value="supervised"/>
+                                        <xs:enumeration value="unsupervised"/>
+                                        <xs:enumeration value="linear"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
                             </xs:element>
                         </xs:sequence>
+                        <xs:attribute name="type" type="propa"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="resultSchema">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="instance" type="xs:boolean"/>
-                            <xs:element name="training" type="xs:boolean"/>
-                        </xs:sequence>
-                    </xs:complexType>
+                <xs:element name="networkType">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Hopfield"/>
+                            <xs:enumeration value="CNN"/>
+                            <xs:enumeration value="ART"/>
+                            <xs:enumeration value="Backpropagation"/>
+                            <xs:enumeration value="Cascade-Correlation"/>
+                            <xs:enumeration value="Kohonen"/>
+                            <xs:enumeration value="Counterpropagation"/>
+                            <xs:enumeration value="Perceptron"/>
+                            <xs:enumeration value="Linear-Associator"/>
+                            <xs:enumeration value="Jordan-Net"/>
+                            <xs:enumeration value="Elman-Net"/>
+                        </xs:restriction>
+                    </xs:simpleType>
                 </xs:element>
-                <xs:element name="parameters" type="parametervalue"/>
-                <xs:element name="data">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="description" type="xs:string"/>
-                            <xs:element name="dataSchemaID" type="xs:string"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="instanceSchemaID" type="xs:string" minOccurs="0"/>
             </xs:sequence>
-            <!--            <xs:assert
-                                test="if(endpoints = 'retrain') then
-                            if(count(instanceSchemaID) > 0) then
-                            true()
-                            else
-                            false()
-                            else
-                            if(count(instanceSchemaID) > 0) then
-                            false()
-                            else true()"/>-->
+            <!--  <xs:assert
+                  test="((propagationType/@type = 'feedback' and propagationType/learningType = 'definedconstructed' and (networkType = 'Hopfield' or networkType = 'CNN')) or (propagationType/@type = 'feedback' and propagationType/learningType = 'trained' and networkType = 'ART') or (propagationType/@type = 'feedforward' and propagationType/learningType = 'supervised' and (networkType = 'Backpropagation' or networkType = 'Cascade-Correlation')) or (propagationType/@type = 'feedforward' and propagationType/learningType = 'unsupervised' and (networkType = 'Counterpropagation' or networkType = 'Kohonen')) or (propagationType/@type = 'feedforward' and propagationType/learningType = 'linear' and (networkType = 'Linear-Associator' or networkType = 'Perceptron')) or (propagationType/@type = 'recurrent' and propagationType/learningType = 'supervised' and (networkType = 'Jordan-Net' or networkType = 'Elman-Net')) and count(networkType) = 1 and count(propagationType/learningType) = 1 and count(propagationType/@type) = 1)"/>-->
         </xs:complexType>
     </xs:element>
 </xs:schema>
+
 

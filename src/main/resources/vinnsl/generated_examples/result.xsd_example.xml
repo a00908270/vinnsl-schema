@@ -1,0 +1,37 @@
+<resultschema>
+  <identifier>string</identifier>
+  <instanceSchemaID>string</instanceSchemaID>
+  <creationdate>2008-09-29</creationdate>
+  <!--Optional:-->
+  <diagram2d>
+    <title>string</title>
+    <description>string</description>
+    <type>string</type>
+    <xaxis>
+      <title>string</title>
+      <description>string</description>
+      <min>100</min>
+      <max>100</max>
+    </xaxis>
+    <yaxis>
+      <title>string</title>
+      <description>string</description>
+      <min>100</min>
+      <max>100</max>
+    </yaxis>
+    <values>
+      <!--1 or more repetitions:-->
+      <value>
+        <xvalue>1000.00</xvalue>
+        <yvalue>1000.00</yvalue>
+      </value>
+    </values>
+  </diagram2d>
+  <!--Optional:-->
+  <table>
+    <input>string</input>
+    <output>string</output>
+  </table>
+  <!--Optional:-->
+  <file>string</file>
+</resultschema>

@@ -9,7 +9,7 @@ Released on GitHub with permission of Dipl.-Ing. Thomas Kopica
 ### XSD Schema
 Download files from [src/main/resources/vinnsl/schema](src/main/resources/vinnsl/schema)
 ### XML Examples
-Generates XML examples to schema files: [src/main/resources/vinnsl/generated_examples](src/main/resources/vinnsl/generated_examples)
+Generated XML examples to schema files: [src/main/resources/vinnsl/generated_examples](src/main/resources/vinnsl/generated_examples)
 ### Compile to Java Classes with JAXB
 - Make sure you have Maven installed
 

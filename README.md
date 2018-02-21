@@ -6,18 +6,9 @@ as specified in the Master Thesis "Vienna Neural Network Specification Language 
 Released on GitHub with permission of Dipl.-Ing. Thomas Kopica
 
 ## Usage
-### XSD Schema
-Download files from [src/main/resources/vinnsl/schema](src/main/resources/vinnsl/schema)
-### XML Examples
-Generated XML examples to schema files: [src/main/resources/vinnsl/generated_examples](src/main/resources/vinnsl/generated_examples)
-### Compile to Java Classes with JAXB
-- Make sure you have Maven installed
-
-Checkout and run
-``mvn compile``
-
+### Use in your mvn Java Project
 ### Add a Maven Dependency
-Get precompiled schema classes as mvn dependency
+Add this maven dependency to your project's ``pom.xml`` and get precompiled schema classes, source files and javadoc
 
 #### Dependency
 ```
@@ -36,3 +27,18 @@ Get precompiled schema classes as mvn dependency
     <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
 </snapshotRepository>
 ```
+
+### Compile to Java Classes with JAXB
+- Make sure you have Maven installed
+
+Checkout and run
+``mvn compile``
+and run
+``mvn package``
+to generate the jar file
+
+## Schema Files
+### XSD Schema
+Download files from [src/main/resources/vinnsl/schema](src/main/resources/vinnsl/schema)
+### XML Examples
+Generated XML examples to schema files: [src/main/resources/vinnsl/generated_examples](src/main/resources/vinnsl/generated_examples)

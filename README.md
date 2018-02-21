@@ -10,22 +10,14 @@ Released on GitHub with permission of Dipl.-Ing. Thomas Kopica
 ### Add a Maven Dependency
 Add this maven dependency to your project's ``pom.xml`` and get precompiled schema classes, source files and javadoc
 
-#### Dependency
+#### Maven Dependency
 ```
 <dependency>
-    <groupId>at.ac.univie.a00908270</groupId>
-    <artifactId>vinnsl-schema</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <groupId>at.ac.univie.a00908270</groupId>
+  <artifactId>vinnsl-schema</artifactId>
+  <version>{vinnsl-schema.version}</version>
+  <type>pom</type>
 </dependency>
-```
-
-#### Repository
-```
-<snapshotRepository>
-    <id>snapshots</id>
-    <name>oss-jfrog-artifactory-snapshots</name>
-    <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
-</snapshotRepository>
 ```
 
 ### Compile to Java Classes with JAXB
@@ -42,3 +34,6 @@ to generate the jar file
 Download files from [src/main/resources/vinnsl/schema](src/main/resources/vinnsl/schema)
 ### XML Examples
 Generated XML examples to schema files: [src/main/resources/vinnsl/generated_examples](src/main/resources/vinnsl/generated_examples)
+
+## Latest Version
+ [ ![Download](https://api.bintray.com/packages/a00908270/a00908270/vinnsl-schema/images/download.svg) ](https://bintray.com/a00908270/a00908270/vinnsl-schema/_latestVersion)

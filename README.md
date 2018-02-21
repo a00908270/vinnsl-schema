@@ -5,8 +5,8 @@ as specified in the Master Thesis "Vienna Neural Network Specification Language 
 
 Released on GitHub with permission of Dipl.-Ing. Thomas Kopica
 
-## Usage
-### Use in your mvn Java Project
+# Usage
+## Use in your Java Project
 ### Add a Maven Dependency
 Add this maven dependency to your project's ``pom.xml`` and get precompiled schema classes, source files and javadoc
 
@@ -19,6 +19,9 @@ Add this maven dependency to your project's ``pom.xml`` and get precompiled sche
   <type>pom</type>
 </dependency>
 ```
+
+### Download Binary
+Download the latest jar release from [/releases](../../releases)
 
 ### Compile to Java Classes with JAXB
 - Make sure you have Maven installed
